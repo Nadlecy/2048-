@@ -3,10 +3,9 @@
 
 class Box
 {
-	public:
-		int value;
+public:
+	int box_value, box_x, box_y;
 
-		Box();
+	Box(int x, int y);
 
-	
 };

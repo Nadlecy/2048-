@@ -3,19 +3,13 @@
 using namespace std;
 
 #include "Box.h";
+#include "Grid.h";
 
 int main()
 {
-	vector<int> array = {};
-	for (int i = 0; i < 16; i++) {
-		array.push_back(0);
-	}
+	Grid* Grille = new Grid();
 
-	for (int j = 0; j < 4; j++) {
-		for (int i =0; i<4; i++){
-			cout << array[i + j];
-		}
-		cout << endl;
-	};
+	Grille->Display();
+
 	return 0;
 }
