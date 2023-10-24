@@ -12,6 +12,7 @@ Grid::Grid()
 	}
 
 	playing = true;
+	Stacker stacker;
 };
 
 void Grid::Display()
@@ -96,10 +97,15 @@ void Grid::Movement()
 		}
 	}
 
-	vector<Box*> stacker(4);
+	if (playerAnswer == "up") {
+		stacker.Launch(0, this);//problem with calling self in function
+	}
+
+
+	//vector<Box*> stacker(4);
 
 	// up = -4, down = +4, left = -1, right = +1
-
+	/*
 	if(playerAnswer == "up"){
 		for(int i =0; i < 16; i++){
 			if (array[i]->box_value != 0){
@@ -171,6 +177,6 @@ void Grid::Movement()
 				}
 			}
 		}
-	};
+	};*/
 };
 

@@ -3,12 +3,14 @@
 #include <vector>;
 using namespace std;
 #include "Box.h";
+#include "Stacker.h";
 
 class Grid
 {
 public:
 	vector<Box *> array;
 	bool playing;
+	Stacker stacker;
 
 	Grid();
 

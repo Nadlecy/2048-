@@ -30,7 +30,7 @@ void Stacker::Retrieve(int slot,  Grid grid) {
 
 void Stacker::Squish() {
 	for (int i = 0; i < 3; i++) {
-		if (storage[i]->box_value == 0 && i<2) {
+		if (storage[i]->box_value == 0 && i<3) {
 			rotate(storage[i], storage[i+1], storage[-1]);
 		}
 		if (storage[i]->box_value == storage[i + 1]->box_value) {
@@ -61,6 +61,7 @@ void Stacker::Send(int slot, Grid grid) {
 void Stacker::Launch(int direction, Grid grid) {
 	for (int slot = 0; slot < 4; slot++) {
 		Retrieve(slot, grid);
+		Squish();
 		Send(slot, grid);
 	}
 }
