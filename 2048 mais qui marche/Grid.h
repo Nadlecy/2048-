@@ -8,10 +8,12 @@ class Grid
 {
 public:
 	vector<Box *> array;
+	bool playing;
 
 	Grid();
 
 	void Display();
+	void CreateNumber(bool isFirst);
 	void Movement();
 
 };

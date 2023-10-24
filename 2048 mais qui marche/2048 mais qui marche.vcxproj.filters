@@ -24,12 +24,18 @@
     <ClCompile Include="Grid.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Stacker.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h">
       <Filter>Fichiers sources</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
+      <Filter>Fichiers sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Stacker.h">
       <Filter>Fichiers sources</Filter>
     </ClInclude>
   </ItemGroup>

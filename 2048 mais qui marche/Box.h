@@ -4,8 +4,8 @@
 class Box
 {
 public:
-	int box_value, box_x, box_y;
+	int box_value;
 
-	Box(int x, int y);
+	Box();
 
 };

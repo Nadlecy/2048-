@@ -9,7 +9,15 @@ int main()
 {
 	Grid* Grille = new Grid();
 
-	Grille->Display();
+	Grille -> CreateNumber(true);
+	
 
+	while (Grille->playing == true) 
+	{
+		Grille -> CreateNumber(false);
+		Grille->Display();
+		Grille->Movement();
+	}
+	
 	return 0;
 }
