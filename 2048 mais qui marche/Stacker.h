@@ -15,6 +15,6 @@ public:
 
 	void Retrieve(int slot, Grid grid);
 	void Squish();
-	void Send(Grid grid);
+	void Send(int slot, Grid grid);
 	void Launch(int direction, Grid grid);
 };
