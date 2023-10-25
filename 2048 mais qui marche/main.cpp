@@ -20,7 +20,7 @@ int main()
 		Grille->Display();
 		Grille->Movement();
 		Grille->playing = Grille->Win();
-		Grille->playing = Grille->Defeat();
+		//Grille->playing = Grille->Defeat();
 
 	}
 	

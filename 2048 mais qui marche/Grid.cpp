@@ -108,19 +108,19 @@ void Grid::Movement()
 
 bool Grid::Win()
 {
-	for (int i = 0, i < 16, i++) {
-		if (array[i] == 2048) {
+	for (int i = 0; i < 16; i++) {
+		if (array[i]->box_value == 2048) {
 			system("cls");
 			cout << "you win";
 
-			return false
+			return false;
 		}
 	}
 
-	return true
+	return true;
 };
 
-bool Grid::Defeat()
+/*bool Grid::Defeat()
 {
 	int u = 0
 
@@ -135,5 +135,5 @@ bool Grid::Defeat()
 	}
 
 	return true
-};
+};*/
 
