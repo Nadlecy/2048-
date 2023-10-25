@@ -1,5 +1,6 @@
-#include <iostream>;
 #include "Box.h";
+
+#include <iostream>;
 
 Box::Box()
 {

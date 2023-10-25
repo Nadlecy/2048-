@@ -1,8 +1,9 @@
 #pragma once
-#include <iostream>;
+
 #include <vector>;
-#include "Box.h";
-#include "Grid.h";
+
+class Box;
+
 using namespace std;
 
 class Stacker
@@ -13,8 +14,8 @@ public:
 
 	Stacker();
 
-	void Retrieve(int slot, Grid grid);
+	void Retrieve(int slot, vector<Box*> array);
 	void Squish();
-	void Send(int slot, Grid grid);
-	void Launch(int direction, Grid grid);
+	void Send(int slot, vector<Box*> array);
+	void Launch(int direction, vector<Box*> array);
 };

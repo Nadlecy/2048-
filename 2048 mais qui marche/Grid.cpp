@@ -12,7 +12,8 @@ Grid::Grid()
 	}
 
 	playing = true;
-	Stacker stacker;
+	stacker = Stacker();
+	directionArray = {"up","down","left","right"};
 };
 
 void Grid::Display()
@@ -93,90 +94,15 @@ void Grid::Movement()
 			choosing = false;
 		}
 		else {
-			cout << "Réponse invalide; veuillez choisir 'up', 'down', 'left' ou 'right'";
+			cout << "Reponse invalide; veuillez choisir 'up', 'down', 'left' ou 'right'";
 		}
 	}
 
-	if (playerAnswer == "up") {
-		stacker.Launch(0, this);//problem with calling self in function
-	}
-
-
-	//vector<Box*> stacker(4);
-
-	// up = -4, down = +4, left = -1, right = +1
-	/*
-	if(playerAnswer == "up"){
-		for(int i =0; i < 16; i++){
-			if (array[i]->box_value != 0){
-				while (i-4 > 0 || array[i-4]->box_value != 0) {
-					int j = array[i]->box_value;
-					array[i]->box_value = 0;
-					array[i-4]->box_value = j;
-				}
-				while (i-4 > 0 ) {
-					if (array[i-4]->box_value == array[i]->box_value){
-						int j = array[i]->box_value;
-						array[i]->box_value = 0;
-						array[i-4]->box_value += j;
-					}
-				}
-			}
+	for (int i = 0; i < 4; i++) {
+		if (playerAnswer == directionArray[i]) {
+			stacker.direction = i;
+			stacker.Launch(i, array);
 		}
 	}
-	else if(playerAnswer == "down"){
-		for(int i =0; i < 16; i++){
-			if (array[i]->box_value != 0){
-				while (i+4 < 16 || array[i+4]->box_value != 0) {
-					int j = array[i]->box_value;
-					array[i]->box_value = 0;
-					array[i+4]->box_value = j;
-				}
-				while (i+4 < 16 ) {
-					if (array[i+4]->box_value == array[i]->box_value){
-						int j = array[i]->box_value;
-						array[i]->box_value = 0;
-						array[i+4]->box_value += j;
-					}
-				}
-			}
-		}
-	}
-	else if(playerAnswer == "left"){
-		for(int i =0; i < 16; i++){
-			if (array[i]->box_value != 0){
-				while (i-4 > 0 || array[i-4]->box_value != 0) {
-					int j = array[i]->box_value;
-					array[i]->box_value = 0;
-					array[i-4]->box_value = j;
-				}
-				while (i-4 > 0 ) {
-					if (array[i-4]->box_value == array[i]->box_value){
-						int j = array[i]->box_value;
-						array[i]->box_value = 0;
-						array[i-4]->box_value += j;
-					}
-				}
-			}
-		}
-	}
-	else if(playerAnswer == "right"){
-		for(int i =0; i < 16; i++){
-			if (array[i]->box_value != 0){
-				while (i-4 > 0 || array[i-4]->box_value != 0) {
-					int j = array[i]->box_value;
-					array[i]->box_value = 0;
-					array[i-4]->box_value = j;
-				}
-				while (i-4 > 0 ) {
-					if (array[i-4]->box_value == array[i]->box_value){
-						int j = array[i]->box_value;
-						array[i]->box_value = 0;
-						array[i-4]->box_value += j;
-					}
-				}
-			}
-		}
-	};*/
 };
 

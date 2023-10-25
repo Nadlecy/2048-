@@ -1,5 +1,9 @@
-#include <iostream>;
 #include "Stacker.h";
+
+#include "Box.h";
+
+#include <iostream>;
+
 
 Stacker::Stacker() {
 	storage = {};
@@ -11,57 +15,97 @@ Stacker::Stacker() {
 	direction = 0; //	0 = up		1 = down	2 = left	3 = right
 }
 
-void Stacker::Retrieve(int slot,  Grid grid) {
+void Stacker::Retrieve(int slot, vector<Box*> array) {
 	for (int boxes = 0; boxes < 4; boxes++) {
 		if (direction == 0) {//up
-			storage[boxes] = grid.array[boxes * 4 + slot];
+			storage[boxes] = array[boxes * 4 + slot];
 		}
 		else if (direction == 1) {//down
-			storage[boxes] = grid.array[(12 - boxes * 4) + slot];
+			storage[boxes] = array[(12 - boxes * 4) + slot];
 		}
 		else if (direction == 2) {//left
-			storage[boxes] = grid.array[boxes + slot * 4];
+			storage[boxes] = array[boxes + slot * 4];
 		}
 		else if (direction == 3) {//right
-			storage[boxes] = grid.array[4 - boxes + slot*4];
+			storage[boxes] = array[3 - boxes + slot * 4];
 		}
 	}
 }
 
 void Stacker::Squish() {
+
+	//checking for a merge on each box of the storage
 	for (int i = 0; i < 3; i++) {
-		if (storage[i]->box_value == 0 && i<3) {
-			rotate(storage[i], storage[i+1], storage[-1]);
+		if (storage[i]->box_value == 0)
+			continue;
+
+		for (int j = i + 1; j < 4; j++) {
+			if (storage[j]->box_value == 0)
+				continue;
+
+			if (storage[j]->box_value == storage[i]->box_value) {
+				storage[j]->box_value = 0;
+				storage[i]->box_value = storage[i]->box_value * 2;
+			}
+
+			break;
 		}
-		if (storage[i]->box_value == storage[i + 1]->box_value) {
+
+		/*
+		cout << endl << i;
+		if (storage[i]->box_value == 0 && i<3) {
+			rotate(storage.begin() + i, storage.begin() + i + 1, storage.end());
+			
+			cout << "rotate";
+
+		}
+		if (storage[i]->box_value == storage[i + 1]->box_value && storage[i]->box_value != 0) {
 			storage[i]->box_value = storage[i]->box_value * 2;
 			storage[i + 1]->box_value = 0;
+			cout << "merge";
+		}
+		cout << storage[i]->box_value;*/
+	}
+	
+	//moving all the 0's to the back of the line
+	for (int i = 0; i < 3; i++) {
+		if (storage[i]->box_value != 0)
+			continue;
+
+		for (int j = i + 1; j < 4; j++) {
+			if (storage[j]->box_value == 0)
+				continue;
+
+			storage[i]->box_value = storage[j]->box_value;
+			storage[j]->box_value = 0;
+
+			break;
 		}
 	}
+
 }
 
-void Stacker::Send(int slot, Grid grid) {
+void Stacker::Send(int slot, vector<Box*> array) {
 	for (int boxes = 0; boxes < 4; boxes++) {
 		if (direction == 0) {//up
-			grid.array[boxes * 4 + slot] = storage[boxes];
+			array[boxes * 4 + slot] = storage[boxes];
 		}
 		else if (direction == 1) {//down
-			grid.array[(12 - boxes * 4) + slot] = storage[boxes];
+			array[(12 - boxes * 4) + slot] = storage[boxes];
 		}
 		else if (direction == 2) {//left
-			grid.array[boxes + slot * 4] = storage[boxes];
+			array[boxes + slot * 4] = storage[boxes];
 		}
 		else if (direction == 3) {//right
-			grid.array[4 - boxes + slot*4] = storage[boxes];
+			array[3 - boxes + slot * 4] = storage[boxes];
 		}
 	}
-
 }
 
-void Stacker::Launch(int direction, Grid grid) {
+void Stacker::Launch(int direction, vector<Box*> array) {
 	for (int slot = 0; slot < 4; slot++) {
-		Retrieve(slot, grid);
+		Retrieve(slot, array);
 		Squish();
-		Send(slot, grid);
+		Send(slot, array);
 	}
 }

@@ -11,6 +11,7 @@ public:
 	vector<Box *> array;
 	bool playing;
 	Stacker stacker;
+	vector<string> directionArray;
 
 	Grid();
 
