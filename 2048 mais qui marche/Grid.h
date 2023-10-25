@@ -10,6 +10,8 @@ class Grid
 public:
 	vector<Box *> array;
 	bool playing;
+	int score;
+	int oldScore;
 	Stacker stacker;
 	vector<string> directionArray;
 
@@ -19,6 +21,6 @@ public:
 	void CreateNumber(bool isFirst);
 	void Movement();
 	bool Win();
-	bool Defeat();
+	//bool Defeat();
 
 };

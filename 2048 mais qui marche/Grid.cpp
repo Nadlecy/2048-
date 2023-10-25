@@ -19,13 +19,16 @@ Grid::Grid()
 	}
 
 	playing = true;
+	score = 0;
+	oldScore = 0;
 	stacker = Stacker();
 	directionArray = {"up","down","left","right"};
 };
 
 void Grid::Display()
 {
-	//system("cls");
+	system("cls");
+	oldScore = score;
 	cout << "_____________________" << endl;
 	for (int i = 0; i < 4; i++) {
 		cout << "|";
@@ -59,6 +62,17 @@ void Grid::Display()
 		}
 		cout << endl << "_____________________" << endl;
 	}
+
+	for (int i = 0; i < 16; i++) {
+
+		score += (array[i]->box_value) ; 
+
+	}
+
+	score -= oldScore;
+
+	cout << endl << "Your score is:" << score << " old score is" << oldScore << endl;
+
 }
 
 void Grid::CreateNumber(bool isFirst)
@@ -108,7 +122,7 @@ void Grid::Movement()
 	while (choosing) {
 
 
-		char c = getch();
+		char c = _getch();
 		switch (c) {
 		case KEY_UP:
 			playerAnswer = "up";
@@ -119,11 +133,11 @@ void Grid::Movement()
 			choosing = false;
 			break;
 		case KEY_LEFT:
-			playerAnswer = "right";
+			playerAnswer = "left";
 			choosing = false;
 			break;
 		case KEY_RIGHT:
-			playerAnswer = "left";
+			playerAnswer = "right";
 			choosing = false;
 			break;
 		default:
@@ -154,19 +168,9 @@ bool Grid::Win()
 	return true;
 };
 
-/*bool Grid::Defeat()
+/*bool Grid::Win()
 {
-	int u = 0
+	
 
-	for (int i = 0, i < 16, i++) {
-		if (array[i] != 0) {
-			u += 1;
-		}
-	}
-
-	if (u == 16) {
-		return false // faudrait ajouer une fonction dans la stackers pour effectuer les 4 deplacement possible voir si il y en a un qui bouge
-	}
-
-	return true
+	return true;
 };*/
