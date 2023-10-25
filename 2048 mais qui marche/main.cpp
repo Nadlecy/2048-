@@ -19,6 +19,9 @@ int main()
 		Grille -> CreateNumber(false);
 		Grille->Display();
 		Grille->Movement();
+		Grille->playing = Grille->Win();
+		Grille->playing = Grille->Defeat();
+
 	}
 	
 	return 0;

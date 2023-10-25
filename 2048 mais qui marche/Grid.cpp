@@ -106,3 +106,34 @@ void Grid::Movement()
 	}
 };
 
+bool Grid::Win()
+{
+	for (int i = 0, i < 16, i++) {
+		if (array[i] == 2048) {
+			system("cls");
+			cout << "you win";
+
+			return false
+		}
+	}
+
+	return true
+};
+
+bool Grid::Defeat()
+{
+	int u = 0
+
+	for (int i = 0, i < 16, i++) {
+		if (array[i] != 0) {
+			u += 1;
+		}
+	}
+
+	if (u == 16) {
+		return false // faudrait ajouer une fonction dans la stackers pour effectuer les 4 deplacement possible voir si il y en a un qui bouge
+	}
+
+	return true
+};
+
