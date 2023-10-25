@@ -1,7 +1,14 @@
-#include <iostream>;
-#include <string>;
 #include "Grid.h";
 #include "Box.h";
+
+#include <iostream>;
+#include <string>;
+#include <conio.h>
+
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
 
 
 Grid::Grid() 
@@ -96,15 +103,32 @@ void Grid::CreateNumber(bool isFirst)
 void Grid::Movement()
 {
 	string playerAnswer;
+
 	bool choosing = true;
 	while (choosing) {
-		cout << "Which direction do you want to play ?" << endl;
-		cin >> playerAnswer;
-		if (playerAnswer == "up" || playerAnswer == "left" || playerAnswer == "right" || playerAnswer == "down") {
+
+
+		char c = getch();
+		switch (c) {
+		case KEY_UP:
+			playerAnswer = "up";
 			choosing = false;
-		}
-		else {
-			cout << "Reponse invalide; veuillez choisir 'up', 'down', 'left' ou 'right'";
+			break;
+		case KEY_DOWN:
+			playerAnswer = "down";
+			choosing = false;
+			break;
+		case KEY_LEFT:
+			playerAnswer = "right";
+			choosing = false;
+			break;
+		case KEY_RIGHT:
+			playerAnswer = "left";
+			choosing = false;
+			break;
+		default:
+			choosing = true;
+			break;
 		}
 	}
 
