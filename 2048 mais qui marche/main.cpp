@@ -16,7 +16,12 @@ int main()
 
 	while (Grille->playing == true) 
 	{
-		Grille -> CreateNumber(false);
+		Grille->CreateNumber(false);
+		if (not Grille->stacker.OverallCheck(Grille->array)) {
+			cout << "loss";
+			break;
+		}
+
 		Grille->Display();
 		Grille->Movement();
 		Grille->playing = Grille->Win();

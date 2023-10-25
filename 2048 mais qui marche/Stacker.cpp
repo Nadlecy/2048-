@@ -50,21 +50,6 @@ void Stacker::Squish() {
 
 			break;
 		}
-
-		/*
-		cout << endl << i;
-		if (storage[i]->box_value == 0 && i<3) {
-			rotate(storage.begin() + i, storage.begin() + i + 1, storage.end());
-			
-			cout << "rotate";
-
-		}
-		if (storage[i]->box_value == storage[i + 1]->box_value && storage[i]->box_value != 0) {
-			storage[i]->box_value = storage[i]->box_value * 2;
-			storage[i + 1]->box_value = 0;
-			cout << "merge";
-		}
-		cout << storage[i]->box_value;*/
 	}
 	
 	//moving all the 0's to the back of the line
@@ -82,7 +67,21 @@ void Stacker::Squish() {
 			break;
 		}
 	}
+}
 
+bool Stacker::Playable() {
+	for (int i = 0; i < 3; i++) {
+		if (storage[i]->box_value == 0)
+			return true;
+
+		for (int j = i + 1; j < 4; j++) {
+			if (storage[j]->box_value == storage[i]->box_value || storage[j]->box_value == 0)
+				return true;
+
+			break;
+		}
+	}
+	return false;
 }
 
 void Stacker::Send(int slot, vector<Box*> array) {
@@ -100,6 +99,19 @@ void Stacker::Send(int slot, vector<Box*> array) {
 			array[3 - boxes + slot * 4] = storage[boxes];
 		}
 	}
+}
+
+bool Stacker::OverallCheck(vector<Box*> array) {
+	for (direction = 0; direction < 4; direction++) {
+		for (int slot = 0; slot < 4; slot++) {
+			Retrieve(slot, array);
+			if (Playable())
+				cout << "hmm yum yum" << endl;
+				return true;
+		}
+	}
+	cout << "eww yucky" << endl;
+	return false;
 }
 
 void Stacker::Launch(int direction, vector<Box*> array) {

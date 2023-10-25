@@ -18,7 +18,7 @@ Grid::Grid()
 
 void Grid::Display()
 {
-	system("cls");
+	//system("cls");
 	cout << "_____________________" << endl;
 	for (int i = 0; i < 4; i++) {
 		cout << "|";
@@ -56,8 +56,18 @@ void Grid::Display()
 
 void Grid::CreateNumber(bool isFirst)
 {
-	bool placing = true;
+	bool placing = false;
+
+	for (int i = 0; i < 16; i++) {
+		if (array[i]->box_value == 0) {
+			placing = true;
+			cout << "gwagwa";
+		}
+	}
+
+
 	int rng = rand() % 16;
+
 	if (isFirst)
 	{
 		array[rng]->box_value = 2;
@@ -136,4 +146,3 @@ bool Grid::Win()
 
 	return true
 };*/
-

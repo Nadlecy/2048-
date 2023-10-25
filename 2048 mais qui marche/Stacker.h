@@ -18,4 +18,7 @@ public:
 	void Squish();
 	void Send(int slot, vector<Box*> array);
 	void Launch(int direction, vector<Box*> array);
+
+	bool Playable();
+	bool OverallCheck(vector<Box*> array);
 };
