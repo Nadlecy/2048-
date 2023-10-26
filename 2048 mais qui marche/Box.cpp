@@ -2,8 +2,8 @@
 
 #include <iostream>;
 
-Box::Box()
+Box::Box(int value /*= 0*/)
 {
-	box_value = 0;
+	box_value = value;
 
 };

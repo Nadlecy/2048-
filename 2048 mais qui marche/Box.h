@@ -6,6 +6,6 @@ class Box
 public:
 	int box_value;
 
-	Box();
+	Box(int value = 0);
 
 };

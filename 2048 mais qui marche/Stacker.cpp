@@ -1,5 +1,4 @@
 #include "Stacker.h";
-
 #include "Box.h";
 
 #include <iostream>;
@@ -105,16 +104,17 @@ bool Stacker::OverallCheck(vector<Box*> array) {
 	for (direction = 0; direction < 4; direction++) {
 		for (int slot = 0; slot < 4; slot++) {
 			Retrieve(slot, array);
-			if (Playable())
-				cout << "hmm yum yum" << endl;
+			if (Playable()) {
 				return true;
+			}
 		}
 	}
-	cout << "eww yucky" << endl;
+	cout << "you lose!" << endl;
 	return false;
 }
 
-void Stacker::Launch(int direction, vector<Box*> array) {
+void Stacker::Launch(int newDirection, vector<Box*> array) {
+	direction = newDirection;
 	for (int slot = 0; slot < 4; slot++) {
 		Retrieve(slot, array);
 		Squish();

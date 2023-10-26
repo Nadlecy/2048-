@@ -27,7 +27,6 @@ Grid::Grid()
 
 void Grid::Display()
 {
-	system("cls");
 	oldScore = score;
 	cout << "_____________________" << endl;
 	for (int i = 0; i < 4; i++) {
@@ -71,7 +70,7 @@ void Grid::Display()
 
 	score -= oldScore;
 
-	cout << endl << "Your score is:" << score << " old score is" << oldScore << endl;
+	cout << endl << "Your score is:" << score  << endl;
 
 }
 
@@ -82,7 +81,6 @@ void Grid::CreateNumber(bool isFirst)
 	for (int i = 0; i < 16; i++) {
 		if (array[i]->box_value == 0) {
 			placing = true;
-			cout << "gwagwa";
 		}
 	}
 
@@ -148,7 +146,6 @@ void Grid::Movement()
 
 	for (int i = 0; i < 4; i++) {
 		if (playerAnswer == directionArray[i]) {
-			stacker.direction = i;
 			stacker.Launch(i, array);
 		}
 	}
@@ -158,8 +155,7 @@ bool Grid::Win()
 {
 	for (int i = 0; i < 16; i++) {
 		if (array[i]->box_value == 2048) {
-			system("cls");
-			cout << "you win";
+			cout << "you win" << endl;
 
 			return false;
 		}
@@ -168,9 +164,3 @@ bool Grid::Win()
 	return true;
 };
 
-/*bool Grid::Win()
-{
-	
-
-	return true;
-};*/

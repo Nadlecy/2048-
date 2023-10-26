@@ -131,11 +131,15 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Stacker.cpp" />
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="TestManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Stacker.h" />
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="TestManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
