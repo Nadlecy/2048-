@@ -1,7 +1,7 @@
 #include "Test.h";
 #include "Box.h";
 
-Test::Test(const char* name, int direction, vector<int> array, vector<int> arrayTwo)
+Test::Test(const char* name, int direction, vector<int> array, vector<int> arrayTwo, bool expected /*= true*/)
 {
 	testName = name;
 	testDirection = direction;
@@ -15,4 +15,6 @@ Test::Test(const char* name, int direction, vector<int> array, vector<int> array
 	for (int i = 0; i < 16; i++) {
 		resultArray.push_back(new Box(arrayTwo[i]));
 	}
+
+	expectedResult = expected;
 }

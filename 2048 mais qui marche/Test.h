@@ -14,8 +14,9 @@ public:
 	vector<Box*> situationArray;
 	vector<Box*> resultArray;
 	int testDirection;
+	bool expectedResult;
 
-	Test(const char * name, int direction, vector<int> array, vector<int> arrayTwo);
+	Test(const char * name, int direction, vector<int> array, vector<int> arrayTwo, bool expected = true);
 
 	/*bool DirectionRight();
 	bool DirectionLeft();

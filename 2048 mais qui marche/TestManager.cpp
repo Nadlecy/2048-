@@ -8,6 +8,7 @@ TestManager::TestManager() {
 
 	//directions	up = 0		 down = 1	 left = 2	 right =3
 	testList.push_back(new Test("Template", 0, { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }, { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }));
+	testList.push_back(new Test("Template Failure", 0, { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }, { 2,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }, false));
 
 	testList.push_back(new Test("Slide Up", 0, { 2,0,0,0, 0,2,0,0, 0,0,2,0, 0,0,0,2 }, { 2,2,2,2, 0,0,0,0, 0,0,0,0, 0,0,0,0 }));
 	testList.push_back(new Test("Slide Down", 1, { 0,0,0,0, 0,0,0,0, 0,0,0,2, 0,0,0,0 }, { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,2 }));

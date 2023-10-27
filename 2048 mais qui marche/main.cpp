@@ -4,23 +4,25 @@
 
 #include <iostream>
 #include <vector>
+//#include <SDL.h>
 
 using namespace std;
 
-
-int main()
+void Test() 
 {
-	
 	TestManager tester;
 	tester.TryTests();
-	
-	/*
+}
+
+void Play() 
+{
+	//SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+
 	Grid* Grille = new Grid();
+	Grille->CreateNumber(true);
 
-	Grille -> CreateNumber(true);
-	
 
-	while (Grille->playing == true) 
+	while (Grille->playing == true)
 	{
 		Grille->CreateNumber(false);
 		Grille->Display();
@@ -36,5 +38,14 @@ int main()
 		}
 
 	}
-	return 0;*/
+
+	//SDL_Quit();
+}
+
+int main()
+{
+	Test();
+	//Play();
+
+	return 0;
 }
