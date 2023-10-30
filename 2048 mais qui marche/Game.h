@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "GameObject.h"
 
@@ -13,4 +13,4 @@ public:
 
 	Game();
 
-};
+};*/

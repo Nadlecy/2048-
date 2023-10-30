@@ -1,4 +1,4 @@
-#include "GameObject.h";
+/*#include "GameObject.h";
 
 #include <vector>
 #include <iostream>;
@@ -9,4 +9,4 @@ GameObject::GameObject(const char* name, vector<int> array, vector<int> arrayTwo
 	objectName = name;
 	objectDimension = array;
 	objectPosition = arrayTwo;
-};
+};*/

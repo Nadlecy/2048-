@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <vector>
-//#include <SDL.h>
 
 using namespace std;
 
@@ -16,7 +15,6 @@ void Test()
 
 void Play() 
 {
-	//SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 
 	Grid* Grille = new Grid();
 	Grille->CreateNumber(true);
@@ -38,14 +36,12 @@ void Play()
 		}
 
 	}
-
-	//SDL_Quit();
 }
 
 int main()
 {
-	Test();
-	//Play();
+	//Test();
+	Play();
 
 	return 0;
 }

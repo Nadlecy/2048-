@@ -1,4 +1,4 @@
-#include "Game.h";
+/*#include "Game.h";
 
 #include <vector>
 #include <iostream>;
@@ -9,4 +9,4 @@ Game::Game()
 	ObjectList = {};
 
 	ObjectList.push_back(new GameObject());
-};
+};*/

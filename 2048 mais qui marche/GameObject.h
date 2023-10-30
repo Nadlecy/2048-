@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include <vector>
 #include <iostream>;
@@ -14,4 +14,4 @@ public:
 
 	GameObject(const char* name, vector<int> array, vector<int> arrayTwo);
 
-};
+};*/
