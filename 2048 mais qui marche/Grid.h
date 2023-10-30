@@ -1,9 +1,11 @@
 #pragma once
-#include <iostream>;
-#include <vector>;
+#include "Box.h"
+#include "Stacker.h"
+
+#include <iostream>
+#include <vector>
+
 using namespace std;
-#include "Box.h";
-#include "Stacker.h";
 
 class Grid
 {

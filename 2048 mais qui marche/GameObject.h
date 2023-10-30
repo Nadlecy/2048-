@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <iostream>;
+#include <iostream>
 using namespace std;
 
 class GameObject
@@ -9,9 +9,10 @@ class GameObject
 public:
 	
 	const char* objectName;
-	vector<int> objectDimension;
+	const char* objectFilename;
 	vector<int> objectPosition;
+	const char* objectType;
 
-	GameObject(const char* name, vector<int> array, vector<int> arrayTwo);
+	GameObject(const char* name, const char* filename, vector<int> array, const char* type);
 
 };

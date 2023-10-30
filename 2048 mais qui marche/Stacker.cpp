@@ -1,7 +1,7 @@
-#include "Stacker.h";
-#include "Box.h";
+#include "Stacker.h"
+#include "Box.h"
 
-#include <iostream>;
+#include <iostream>
 
 
 Stacker::Stacker() {

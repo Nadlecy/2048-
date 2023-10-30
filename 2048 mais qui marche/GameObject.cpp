@@ -1,12 +1,13 @@
-#include "GameObject.h";
+#include "GameObject.h"
 
 #include <vector>
-#include <iostream>;
+#include <iostream>
 using namespace std;
 
-GameObject::GameObject(const char* name, vector<int> array, vector<int> arrayTwo)
+GameObject::GameObject(const char* name, const char* filename, vector<int> array, const char* type)
 {
 	objectName = name;
-	objectDimension = array;
-	objectPosition = arrayTwo;
+	objectFilename = filename;
+	objectPosition = array;
+	objectType = type;
 };

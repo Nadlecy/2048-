@@ -1,5 +1,5 @@
-#include "Test.h";
-#include "Box.h";
+#include "Test.h"
+#include "Box.h"
 
 Test::Test(const char* name, int direction, vector<int> array, vector<int> arrayTwo, bool expected /*= true*/)
 {

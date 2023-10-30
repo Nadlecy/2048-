@@ -1,6 +1,6 @@
-#include "Box.h";
+#include "Box.h"
 
-#include <iostream>;
+#include <iostream>
 
 Box::Box(int value /*= 0*/)
 {

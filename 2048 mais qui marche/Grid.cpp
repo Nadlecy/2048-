@@ -1,8 +1,8 @@
-#include "Grid.h";
-#include "Box.h";
+#include "Grid.h"
+#include "Box.h"
 
-#include <iostream>;
-#include <string>;
+#include <iostream>
+#include <string>
 #include <conio.h>
 
 #define KEY_UP 72
