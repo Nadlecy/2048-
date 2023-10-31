@@ -1,9 +1,11 @@
 #pragma once
-#include "Box.h"
+
+class Box;
+
 #include "Stacker.h"
 
-#include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 

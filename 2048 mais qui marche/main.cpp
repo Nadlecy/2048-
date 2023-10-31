@@ -1,4 +1,4 @@
-#include "Box.h"
+
 #include "Grid.h"
 #include "TestManager.h"
 #include "GameWindow.h"
@@ -23,7 +23,7 @@ void Play()
 
 	Grid* Grille = new Grid();
 	Grille->CreateNumber(true);
-
+	game.ScreenDisplay();
 
 	while (Grille->playing == true)
 	{
@@ -33,7 +33,7 @@ void Play()
 
 		Grille->Movement();
 
-		system("cls");
+		//system("cls");
 
 		if (not (Grille->Win() && Grille->stacker.OverallCheck(Grille->array))) {
 			Grille->Display();
@@ -41,6 +41,7 @@ void Play()
 		}
 
 	}
+
 	game.CloseWindow();
 		
 }

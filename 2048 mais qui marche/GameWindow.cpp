@@ -1,9 +1,11 @@
 #include "GameWindow.h"
 #include "GameObject.h"
-#include <SDL.h>
 
+#include <SDL.h>
+#include <SDL_image.h>
 #include <vector>
 #include <iostream>
+
 using namespace std;
 
 GameWindow::GameWindow()
@@ -18,18 +20,24 @@ GameWindow::GameWindow()
 };
 
 void GameWindow::ScreenDisplay() {
-	int listlenght = objectList.size();
-
-	for ( int i =0; i < listlenght; i++){
-		SDL_Surface* /*nom du truc*/ tmp =  SDL_LoadBMP(objectList[i]->objectFilename);
-
-		int SDL_RenderCopy(SDL_Renderer * renderer,SDL_Texture * texture,const SDL_Rect * srcrect,const SDL_Rect * dstrect);
-	}
+		SDL_Surface* image = IMG_Load("img/2.png");
+		if (!image)
+		{
+			printf("Erreur de chargement de l'image : %s", SDL_GetError());
+			cout << "Image not load";
+		}
+		SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, image);
+		SDL_RenderCopy( renderer, texture,NULL,NULL);
+		SDL_RenderPresent(renderer);
 }
 
-void GameWindow::NewObject(const char* name, const char* filename, vector<int> sizeArray, vector<int> array, const char* type) {
-	objectList.push_back(new GameObject(name, filename, sizeArray, array, type));
+void GameWindow::NewObject(const char* name, const char* filename, int sizeW, int sizeH, int posX, int posY, const char* type) {
+	objectList.push_back(new GameObject(name, filename, sizeW, sizeH, posX, posY, type));
 };
+
+void GameWindow::LoadTextures() {
+
+}
 
 void GameWindow::CloseWindow() {
 	SDL_Quit();
