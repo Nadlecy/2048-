@@ -23,6 +23,7 @@ void Play()
 
 	Grid* Grille = new Grid();
 	Grille->CreateNumber(true);
+	game.LoadTextures();
 	game.ScreenDisplay();
 
 	while (Grille->playing == true)

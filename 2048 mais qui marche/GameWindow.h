@@ -3,15 +3,16 @@
 class GameObject;
 struct SDL_Window;
 struct SDL_Renderer;
-struct SDL_Surface;
+struct SDL_Texture;
 
 #include <vector>
+#include <map>
 using namespace std;
 
 class GameWindow
 {
 public:
-	vector<SDL_Surface*> textureList;
+	map<const char*, SDL_Texture*> textureList;
 	vector<GameObject*> objectList;
 	vector<int> windowSize;
 	SDL_Window* window;
