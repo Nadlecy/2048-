@@ -9,12 +9,12 @@ Stacker::Stacker() {
 
 	for (int u = 0; u < 4; u++)
 	{
-		storage.push_back(new Box());
+		storage.push_back(Box());
 	}
 	direction = 0; //	0 = up		1 = down	2 = left	3 = right
 }
 
-void Stacker::Retrieve(int slot, vector<Box*> array) {
+void Stacker::Retrieve(int slot, vector<Box> array) {
 	for (int boxes = 0; boxes < 4; boxes++) {
 		if (direction == 0) {//up
 			storage[boxes] = array[boxes * 4 + slot];
@@ -35,16 +35,16 @@ void Stacker::Squish() {
 
 	//checking for a merge on each box of the storage
 	for (int i = 0; i < 3; i++) {
-		if (storage[i]->box_value == 0)
+		if (storage[i].box_value == 0)
 			continue;
 
 		for (int j = i + 1; j < 4; j++) {
-			if (storage[j]->box_value == 0)
+			if (storage[j].box_value == 0)
 				continue;
 
-			if (storage[j]->box_value == storage[i]->box_value) {
-				storage[j]->box_value = 0;
-				storage[i]->box_value = storage[i]->box_value * 2;
+			if (storage[j].box_value == storage[i].box_value) {
+				storage[j].box_value = 0;
+				storage[i].box_value = storage[i].box_value * 2;
 			}
 
 			break;
@@ -53,15 +53,15 @@ void Stacker::Squish() {
 	
 	//moving all the 0's to the back of the line
 	for (int i = 0; i < 3; i++) {
-		if (storage[i]->box_value != 0)
+		if (storage[i].box_value != 0)
 			continue;
 
 		for (int j = i + 1; j < 4; j++) {
-			if (storage[j]->box_value == 0)
+			if (storage[j].box_value == 0)
 				continue;
 
-			storage[i]->box_value = storage[j]->box_value;
-			storage[j]->box_value = 0;
+			storage[i].box_value = storage[j].box_value;
+			storage[j].box_value = 0;
 
 			break;
 		}
@@ -70,11 +70,11 @@ void Stacker::Squish() {
 
 bool Stacker::Playable() {
 	for (int i = 0; i < 3; i++) {
-		if (storage[i]->box_value == 0)
+		if (storage[i].box_value == 0)
 			return true;
 
 		for (int j = i + 1; j < 4; j++) {
-			if (storage[j]->box_value == storage[i]->box_value || storage[j]->box_value == 0)
+			if (storage[j].box_value == storage[i].box_value || storage[j].box_value == 0)
 				return true;
 
 			break;
@@ -83,7 +83,7 @@ bool Stacker::Playable() {
 	return false;
 }
 
-void Stacker::Send(int slot, vector<Box*> array) {
+void Stacker::Send(int slot, vector<Box> array) {
 	for (int boxes = 0; boxes < 4; boxes++) {
 		if (direction == 0) {//up
 			array[boxes * 4 + slot] = storage[boxes];
@@ -100,7 +100,7 @@ void Stacker::Send(int slot, vector<Box*> array) {
 	}
 }
 
-bool Stacker::OverallCheck(vector<Box*> array) {
+bool Stacker::OverallCheck(vector<Box> array) {
 	for (direction = 0; direction < 4; direction++) {
 		for (int slot = 0; slot < 4; slot++) {
 			Retrieve(slot, array);
@@ -113,7 +113,7 @@ bool Stacker::OverallCheck(vector<Box*> array) {
 	return false;
 }
 
-void Stacker::Launch(int newDirection, vector<Box*> array) {
+void Stacker::Launch(int newDirection, vector<Box> array) {
 	direction = newDirection;
 	for (int slot = 0; slot < 4; slot++) {
 		Retrieve(slot, array);

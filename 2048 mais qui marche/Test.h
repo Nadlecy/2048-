@@ -11,8 +11,8 @@ class Test
 {
 public:
 	const char * testName;
-	vector<Box*> situationArray;
-	vector<Box*> resultArray;
+	vector<Box> situationArray;
+	vector<Box> resultArray;
 	int testDirection;
 	bool expectedResult;
 

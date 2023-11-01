@@ -15,7 +15,7 @@ Grid::Grid()
 {
 	array = {};
 	for (int i = 0; i < 16; i++) {
-		array.push_back(new Box());
+		array.push_back(Box());
 	}
 
 	playing = true;
@@ -32,14 +32,14 @@ void Grid::Display()
 	for (int i = 0; i < 4; i++) {
 		cout << "|";
 		for (int u = 0; u < 4; u++) {
-			if (array[i*4 + u]->box_value > 0)
+			if (array[i*4 + u].box_value > 0)
 			{
 
-				int size = trunc(log10(array[i * 4 +u]->box_value));
+				int size = trunc(log10(array[i * 4 +u].box_value));
 
 				if (size == 4){
 
-					cout << array[i * 4 +u]->box_value;
+					cout << array[i * 4 +u].box_value;
 
 				} else {
 
@@ -51,7 +51,7 @@ void Grid::Display()
 
 					}
 
-					cout << space << array[i * 4 +u]->box_value <<"|";
+					cout << space << array[i * 4 +u].box_value <<"|";
 
 				}
 			}
@@ -64,7 +64,7 @@ void Grid::Display()
 
 	for (int i = 0; i < 16; i++) {
 
-		score += (array[i]->box_value) ; 
+		score += (array[i].box_value) ; 
 
 	}
 
@@ -79,7 +79,7 @@ void Grid::CreateNumber(bool isFirst)
 	bool placing = false;
 
 	for (int i = 0; i < 16; i++) {
-		if (array[i]->box_value == 0) {
+		if (array[i].box_value == 0) {
 			placing = true;
 		}
 	}
@@ -89,19 +89,19 @@ void Grid::CreateNumber(bool isFirst)
 
 	if (isFirst)
 	{
-		array[rng]->box_value = 2;
+		array[rng].box_value = 2;
 	} 
 	else 
 	{
 		while (placing) {
-			if (array[rng]->box_value == 0) {
+			if (array[rng].box_value == 0) {
 
 				if (rand() % 10 == 9)
 				{
-					array[rng]->box_value = 4; 
+					array[rng].box_value = 4; 
 				}
 				else {
-					array[rng]->box_value = 2;
+					array[rng].box_value = 2;
 				}
 				placing = false;
 			}
@@ -154,7 +154,7 @@ void Grid::Movement()
 bool Grid::Win()
 {
 	for (int i = 0; i < 16; i++) {
-		if (array[i]->box_value == 2048) {
+		if (array[i].box_value == 2048) {
 			cout << "you win" << endl;
 
 			return false;

@@ -8,12 +8,12 @@ Test::Test(const char* name, int direction, vector<int> array, vector<int> array
 	
 	situationArray = {};
 	for (int i = 0; i < 16; i++) {
-		situationArray.push_back(new Box(array[i]));
+		situationArray.push_back(Box(array[i]));
 	}
 
 	resultArray = {};
 	for (int i = 0; i < 16; i++) {
-		resultArray.push_back(new Box(arrayTwo[i]));
+		resultArray.push_back(Box(arrayTwo[i]));
 	}
 
 	expectedResult = expected;

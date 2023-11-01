@@ -12,7 +12,7 @@ using namespace std;
 class Grid
 {
 public:
-	vector<Box *> array;
+	vector<Box> array;
 	bool playing;
 	int score;
 	int oldScore;

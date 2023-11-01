@@ -28,8 +28,6 @@ void GameWindow::ScreenDisplay() {
 
 		SDL_Rect dstrect;
 
-		Box box = Box(2);
-
 		dstrect.x = windowSize[0]/2 - windowSize[1]/2;
 		dstrect.y = 0;
 		dstrect.w = windowSize[1];
@@ -40,7 +38,12 @@ void GameWindow::ScreenDisplay() {
 
 		SDL_RenderPresent(renderer);
 
-		box.BoxDisplay(windowSize[1], windowSize[0], textureList,renderer);
+		for (int i = 0; i < 16; i++) {
+			Box box = grid.array[i];
+			box.BoxDisplay(windowSize[1], windowSize[0], textureList, renderer);
+			
+		}
+
 }
 
 void GameWindow::NewObject(const char* name, int sizeW, int sizeH, int posX, int posY) {

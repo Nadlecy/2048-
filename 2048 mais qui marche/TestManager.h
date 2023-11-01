@@ -6,7 +6,7 @@
 
 class TestManager {
 public:
-	vector<Test*> testList;
+	vector<Test> testList;
 	Stacker stacker;
 
 	TestManager();

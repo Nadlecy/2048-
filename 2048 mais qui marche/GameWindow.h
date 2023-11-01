@@ -5,6 +5,8 @@ struct SDL_Window;
 struct SDL_Renderer;
 struct SDL_Texture;
 
+#include "Grid.h"
+
 #include <vector>
 #include <map>
 #include <string> 
@@ -18,6 +20,7 @@ public:
 	vector<int> windowSize;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	Grid grid;
 
 	GameWindow();
 
