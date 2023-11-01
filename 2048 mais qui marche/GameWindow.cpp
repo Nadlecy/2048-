@@ -25,11 +25,16 @@ void GameWindow::ScreenDisplay() {
 		SDL_RenderPresent(renderer);
 		SDL_Delay(4500);
 
-		const SDL_Rect* srcrect;
+		SDL_Rect dstrect;
 
-		const SDL_Rect* dstrect;
+		dstrect.x = windowSize[0]/2 - windowSize[1]/2;
+		dstrect.y = 0;
+		dstrect.w = windowSize[1];
+		dstrect.h = windowSize[1];
 
-		SDL_RenderCopy(renderer, textureList["mainbg"], srcrect, dstrect);
+		SDL_RenderCopy(renderer, textureList["mainBG"], NULL, &dstrect);
+
+
 		SDL_RenderPresent(renderer);
 }
 
