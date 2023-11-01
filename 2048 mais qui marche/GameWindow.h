@@ -21,7 +21,7 @@ public:
 	GameWindow();
 
 	void ScreenDisplay();
-	void NewObject(const char* name, const char* filename, int sizeW, int sizeH, int posX, int posY, const char* type);
+	void NewObject(const char* name, int sizeW, int sizeH, int posX, int posY);
 	void LoadTextures();
 	void CloseWindow();
 };

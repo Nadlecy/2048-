@@ -1,13 +1,11 @@
 #include "GameObject.h"
 
 
-GameObject::GameObject(const char* name, const char* filename, int sizeW, int sizeH, int posX, int posY, const char* type)
+GameObject::GameObject(const char* name, int sizeW, int sizeH, int posX, int posY)
 {
 	objectName = name;
-	objectFilename = filename;
 	width = sizeW;
 	height = sizeH;
-	positonX = posX;
+	positionX = posX;
 	positionY = posY;
-	objectType = type;
 };

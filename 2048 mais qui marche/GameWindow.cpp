@@ -4,7 +4,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <vector>
-#include <map>
 #include <iostream>
 
 using namespace std;
@@ -38,8 +37,8 @@ void GameWindow::ScreenDisplay() {
 		SDL_RenderPresent(renderer);
 }
 
-void GameWindow::NewObject(const char* name, const char* filename, int sizeW, int sizeH, int posX, int posY, const char* type) {
-	objectList.push_back(new GameObject(name, filename, sizeW, sizeH, posX, posY, type));
+void GameWindow::NewObject(const char* name, int sizeW, int sizeH, int posX, int posY) {
+	objectList.push_back(new GameObject(name, sizeW, sizeH, posX, posY));
 };
 
 void GameWindow::LoadTextures() {
