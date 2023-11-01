@@ -1,5 +1,6 @@
 #include "GameWindow.h"
 #include "GameObject.h"
+#include "Box.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -16,6 +17,7 @@ GameWindow::GameWindow()
 	window = SDL_CreateWindow("SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowSize[0], windowSize[1], SDL_WINDOW_FULLSCREEN_DESKTOP);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
 	
+	
 	SDL_SetWindowTitle(window, "2048");
 };
 
@@ -26,6 +28,8 @@ void GameWindow::ScreenDisplay() {
 
 		SDL_Rect dstrect;
 
+		Box box = Box(2);
+
 		dstrect.x = windowSize[0]/2 - windowSize[1]/2;
 		dstrect.y = 0;
 		dstrect.w = windowSize[1];
@@ -35,6 +39,8 @@ void GameWindow::ScreenDisplay() {
 
 
 		SDL_RenderPresent(renderer);
+
+		box.BoxDisplay(windowSize[1], windowSize[0], textureList,renderer);
 }
 
 void GameWindow::NewObject(const char* name, int sizeW, int sizeH, int posX, int posY) {

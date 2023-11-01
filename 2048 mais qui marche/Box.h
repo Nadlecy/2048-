@@ -3,6 +3,7 @@
 #include "GameObject.h"
 
 #include <map>
+#include <string> 
 using namespace std;
 
 struct SDL_Window;
@@ -18,5 +19,5 @@ public:
 	Box(int value);
 	Box();
 
-	void BoxDisplay(int screenH, int screenW, map<const char*, SDL_Texture*> textureList);
+	void BoxDisplay(int screenH, int screenW, map<string, SDL_Texture*> textureList, SDL_Renderer* renderer);
 };

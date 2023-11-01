@@ -7,12 +7,13 @@ struct SDL_Texture;
 
 #include <vector>
 #include <map>
+#include <string> 
 using namespace std;
 
 class GameWindow
 {
 public:
-	map<const char*, SDL_Texture*> textureList;
+	map<string, SDL_Texture*> textureList;
 	vector<GameObject*> objectList;
 	vector<int> windowSize;
 	SDL_Window* window;
