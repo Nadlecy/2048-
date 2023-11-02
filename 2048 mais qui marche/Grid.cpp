@@ -31,7 +31,7 @@ Grid::Grid()
 /*
 void Grid::Display()
 {
-	oldScore = score;
+	
 	cout << "_____________________" << endl;
 	for (int i = 0; i < 4; i++) {
 		cout << "|";
@@ -65,16 +65,6 @@ void Grid::Display()
 		}
 		cout << endl << "_____________________" << endl;
 	}
-
-	for (int i = 0; i < 16; i++) {
-
-		score += (array[i].box_value) ; 
-
-	}
-
-	score -= oldScore;
-
-	cout << endl << "Your score is:" << score  << endl;
 
 }*/
 
@@ -114,6 +104,16 @@ void Grid::CreateNumber(bool isFirst)
 			}
 		}
 	}
+
+	oldScore = score;
+
+	for (int i = 0; i < 16; i++) {
+
+		score += (array[i].box_value);
+
+	}
+
+	score -= oldScore;
 }
 
 void Grid::Movement()

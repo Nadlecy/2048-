@@ -31,10 +31,11 @@ void Play()
 	{
 		game.grid.CreateNumber(false);
 	
+		game.Score();
 		game.ScreenDisplay();
 		game.WindowMovement();
 
-		//system("cls");
+		system("cls");
 
 		if (not game.grid.stacker.OverallCheck(game.grid.array)) {
 			game.ScreenDisplay();

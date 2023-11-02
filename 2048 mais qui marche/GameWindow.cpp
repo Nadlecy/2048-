@@ -18,8 +18,18 @@ GameWindow::GameWindow()
 	windowSize = { DM.w, DM.h }; // {largeur, hauteur}
 	window = SDL_CreateWindow("SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowSize[0], windowSize[1], SDL_WINDOW_FULLSCREEN_DESKTOP);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+
+	color = { 255, 255,255 };
+
+	font = TTF_OpenFont("font/KrabbyPatty.ttf", 120);
 	
 	SDL_SetWindowTitle(window, "2048");
+
+	objectList = {
+		new GameObject("mainBG", windowSize[1], windowSize[1], windowSize[0] / 2 - windowSize[1] / 2, 0),
+		new GameObject("scoreText", ((windowSize[0]-windowSize[1])/20) * 8, windowSize[1] / 8, (windowSize[0] - windowSize[1]) / 20, 0),
+		new GameObject("score", ((windowSize[0] - windowSize[1]) / 20) * 8, windowSize[1] / 8, (windowSize[0] - windowSize[1]) / 20, windowSize[1] / 8)
+	};
 };
 
 void GameWindow::LoadTextures() {
@@ -41,29 +51,37 @@ void GameWindow::LoadTextures() {
 	textureList["loss"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/Davy-Jones-skeleton.png"));
 	textureList["winTransition"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/winTransition.png"));
 	textureList["win"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/win.png"));
-	//textureList["win"] = SDL_CreateTextureFromSurface(renderer, );
+	textureList["scoreText"] = SDL_CreateTextureFromSurface(renderer, TTF_RenderUTF8_Blended(font, "Score:", color));
+}
 
+void GameWindow::Score(){
+	char str[4];
+	snprintf(str, sizeof(str), "%d", grid.score);
+
+	textureList["score"] = SDL_CreateTextureFromSurface(renderer, TTF_RenderUTF8_Blended(font, str, color));
 }
 
 void GameWindow::ScreenDisplay() {
-		SDL_RenderCopy(renderer, textureList["secondaryBG"], NULL, NULL);
 
-		SDL_Rect dstrect;
+	SDL_RenderCopy(renderer, textureList["secondaryBG"], NULL, NULL);
 
-		dstrect.x = windowSize[0] / 2 - windowSize[1] / 2;
-		dstrect.y = 0;
-		dstrect.w = windowSize[1];
-		dstrect.h = windowSize[1];
+	SDL_Rect rect;
 
-		SDL_RenderCopy(renderer, textureList["mainBG"], NULL, &dstrect);
+	for (int i = 0; i < objectList.size(); i++) {
 
+		rect.w = objectList[i]->width;
+		rect.h = objectList[i]->height;
+		rect.x = objectList[i]->positionX;
+		rect.y = objectList[i]->positionY;
+		SDL_RenderCopy(renderer, textureList[objectList[i]->objectName], NULL, &rect);
+	}
 
-		SDL_RenderPresent(renderer);
+	SDL_RenderPresent(renderer);
 
-		for (int i = 0; i < 16; i++) {
-			grid.array[i].BoxDisplay(windowSize[1], windowSize[0], textureList, renderer);
+	for (int i = 0; i < 16; i++) {
+		grid.array[i].BoxDisplay(windowSize[1], windowSize[0], textureList, renderer);
 
-		}
+	}
 }
 
 void GameWindow::WindowWin() {

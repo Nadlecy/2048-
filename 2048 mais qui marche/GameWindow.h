@@ -10,6 +10,7 @@ struct SDL_Texture;
 #include <vector>
 #include <map>
 #include <string> 
+#include <SDL_ttf.h>
 using namespace std;
 
 class GameWindow
@@ -22,10 +23,15 @@ public:
 	SDL_Renderer* renderer;
 	Grid grid;
 
+
+	TTF_Font* font;
+	SDL_Color color;
+
 	GameWindow();
 	
 	void ScreenDisplay();
 	void LoadTextures();
+	void Score();
 	void WindowMovement();
 	void WindowWin();
 	void WindowLoss();
