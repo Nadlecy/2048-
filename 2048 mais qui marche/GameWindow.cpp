@@ -1,6 +1,7 @@
 #include "GameWindow.h"
 #include "GameObject.h"
 #include "Box.h"
+#include "Grid.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -17,14 +18,11 @@ GameWindow::GameWindow()
 	window = SDL_CreateWindow("SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowSize[0], windowSize[1], SDL_WINDOW_FULLSCREEN_DESKTOP);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
 	
-	
 	SDL_SetWindowTitle(window, "2048");
 };
 
 void GameWindow::ScreenDisplay() {
 		SDL_RenderCopy( renderer, textureList["secondaryBG"], NULL, NULL);
-		SDL_RenderPresent(renderer);
-		SDL_Delay(4500);
 
 		SDL_Rect dstrect;
 
@@ -39,8 +37,7 @@ void GameWindow::ScreenDisplay() {
 		SDL_RenderPresent(renderer);
 
 		for (int i = 0; i < 16; i++) {
-			Box box = grid.array[i];
-			box.BoxDisplay(windowSize[1], windowSize[0], textureList, renderer);
+			grid.array[i].BoxDisplay(windowSize[1], windowSize[0], textureList, renderer);
 			
 		}
 
@@ -51,6 +48,7 @@ void GameWindow::NewObject(const char* name, int sizeW, int sizeH, int posX, int
 };
 
 void GameWindow::LoadTextures() {
+	textureList["0"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/fond-case.png"));
 	textureList["2"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/2.png"));
 	textureList["4"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/4.png"));
 	textureList["8"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/8.png"));

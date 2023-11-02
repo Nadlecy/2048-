@@ -26,10 +26,10 @@ void Box::BoxDisplay(int screenH, int screenW, map<string, SDL_Texture*> texture
 
 	SDL_Rect dstrect;
 
-	dstrect.x = screenW / 2 - screenH / 2 + 20 /* + posX */ ;
-	dstrect.y = 20 /* + posY */;
-	dstrect.w = (screenW / 2 - screenH / 2) / 3;
-	dstrect.h = (screenW / 2 - screenH / 2) / 3;
+	dstrect.x = screenW / 2 - screenH / 2 + (screenH / 4) * positionX + (screenH / 80);
+	dstrect.y = (screenH / 4) * positionY + (screenH / 80);
+	dstrect.w = (screenH / 4) - (screenH / 40);
+	dstrect.h = (screenH / 4) - (screenH / 40);
 
 	SDL_RenderCopy(renderer, textureList[to_string(box_value)], NULL, &dstrect);
 

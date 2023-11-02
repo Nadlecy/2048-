@@ -21,24 +21,22 @@ void Play()
 
 	GameWindow game = GameWindow();
 
-	Grid* Grille = new Grid();
-	Grille->CreateNumber(true);
+	game.grid.CreateNumber(true);
 	game.LoadTextures();
-	game.ScreenDisplay();
 
-	while (Grille->playing == true)
+	while (game.grid.playing == true)
 	{
-		Grille->CreateNumber(false);
-		Grille->Display();
+		game.grid.CreateNumber(false);
+		game.grid.Display();
 
-
-		Grille->Movement();
+		game.ScreenDisplay();
+		game.grid.Movement();
 
 		//system("cls");
 
-		if (not (Grille->Win() && Grille->stacker.OverallCheck(Grille->array))) {
-			Grille->Display();
-			Grille->playing = false;
+		if (not (game.grid.Win() && game.grid.stacker.OverallCheck(game.grid.array))) {
+			game.grid.Display();
+			game.grid.playing = false;
 		}
 
 	}

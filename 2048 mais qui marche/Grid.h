@@ -1,8 +1,7 @@
 #pragma once
 
-class Box;
-
 #include "Stacker.h"
+#include "Box.h"
 
 #include <vector>
 #include <string>

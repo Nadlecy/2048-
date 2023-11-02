@@ -2,7 +2,8 @@
 
 class GameObject
 {
-private:
+	//ask about this !
+public:
 	
 	const char* objectName;
 	int width;
@@ -10,6 +11,5 @@ private:
 	int positionX;
 	int positionY;
 
-public:
 	GameObject(const char* name, int width, int height, int positionX, int positionY);
 };

@@ -14,11 +14,11 @@ public:
 
 	Stacker();
 
-	void Retrieve(int slot, vector<Box> array);
+	void Retrieve(int slot, vector<Box>& array);
 	void Squish();
-	void Send(int slot, vector<Box> array);
-	void Launch(int direction, vector<Box> array);
+	void Send(int slot, vector<Box>& array);
+	void Launch(int direction, vector<Box>& array);
 
 	bool Playable();
-	bool OverallCheck(vector<Box> array);
+	bool OverallCheck(vector<Box>& array);
 };

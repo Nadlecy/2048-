@@ -13,9 +13,10 @@
 
 Grid::Grid() 
 {
-	array = {};
-	for (int i = 0; i < 16; i++) {
-		array.push_back(Box());
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			array.push_back(Box(0, "box", 0, 0, j, i));
+		}
 	}
 
 	playing = true;

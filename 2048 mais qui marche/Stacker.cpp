@@ -14,7 +14,7 @@ Stacker::Stacker() {
 	direction = 0; //	0 = up		1 = down	2 = left	3 = right
 }
 
-void Stacker::Retrieve(int slot, vector<Box> array) {
+void Stacker::Retrieve(int slot, vector<Box>& array) {
 	for (int boxes = 0; boxes < 4; boxes++) {
 		if (direction == 0) {//up
 			storage[boxes] = array[boxes * 4 + slot];
@@ -83,7 +83,7 @@ bool Stacker::Playable() {
 	return false;
 }
 
-void Stacker::Send(int slot, vector<Box> array) {
+void Stacker::Send(int slot, vector<Box>& array) {
 	for (int boxes = 0; boxes < 4; boxes++) {
 		if (direction == 0) {//up
 			array[boxes * 4 + slot] = storage[boxes];
@@ -100,7 +100,7 @@ void Stacker::Send(int slot, vector<Box> array) {
 	}
 }
 
-bool Stacker::OverallCheck(vector<Box> array) {
+bool Stacker::OverallCheck(vector<Box>& array) {
 	for (direction = 0; direction < 4; direction++) {
 		for (int slot = 0; slot < 4; slot++) {
 			Retrieve(slot, array);
@@ -113,7 +113,7 @@ bool Stacker::OverallCheck(vector<Box> array) {
 	return false;
 }
 
-void Stacker::Launch(int newDirection, vector<Box> array) {
+void Stacker::Launch(int newDirection, vector<Box>& array) {
 	direction = newDirection;
 	for (int slot = 0; slot < 4; slot++) {
 		Retrieve(slot, array);
