@@ -23,9 +23,10 @@ public:
 	Grid grid;
 
 	GameWindow();
-
+	
 	void ScreenDisplay();
-	void NewObject(const char* name, int sizeW, int sizeH, int posX, int posY);
 	void LoadTextures();
-	void CloseWindow();
+	void WindowMovement();
+	void WindowWin();
+	void WindowLoss();
 };

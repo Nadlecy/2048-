@@ -24,13 +24,13 @@ bool TestManager::TryTests() {
 	for (int i = 0; i < testList.size(); i++) {
 		stacker.Launch(testList[i].testDirection, testList[i].situationArray);
 		cout << testList[i].testName;
-		bool error = false;
+		bool valid = true;
 		for (int j = 0; j < 16; j++) {
 			if (testList[i].resultArray[j].box_value != testList[i].situationArray[j].box_value) {
-				error = true;
+				valid = false;
 			}
 		}
-		if (error) {
+		if (valid != testList[i].expectedResult) {
 			cout << " failure !";
 		}
 		else {

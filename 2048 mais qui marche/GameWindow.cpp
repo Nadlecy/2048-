@@ -7,6 +7,7 @@
 #include <SDL_image.h>
 #include <vector>
 #include <iostream>
+#include <SDL_ttf.h>
 
 using namespace std;
 
@@ -19,32 +20,6 @@ GameWindow::GameWindow()
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
 	
 	SDL_SetWindowTitle(window, "2048");
-};
-
-void GameWindow::ScreenDisplay() {
-		SDL_RenderCopy( renderer, textureList["secondaryBG"], NULL, NULL);
-
-		SDL_Rect dstrect;
-
-		dstrect.x = windowSize[0]/2 - windowSize[1]/2;
-		dstrect.y = 0;
-		dstrect.w = windowSize[1];
-		dstrect.h = windowSize[1];
-
-		SDL_RenderCopy(renderer, textureList["mainBG"], NULL, &dstrect);
-
-
-		SDL_RenderPresent(renderer);
-
-		for (int i = 0; i < 16; i++) {
-			grid.array[i].BoxDisplay(windowSize[1], windowSize[0], textureList, renderer);
-			
-		}
-
-}
-
-void GameWindow::NewObject(const char* name, int sizeW, int sizeH, int posX, int posY) {
-	objectList.push_back(new GameObject(name, sizeW, sizeH, posX, posY));
 };
 
 void GameWindow::LoadTextures() {
@@ -62,8 +37,79 @@ void GameWindow::LoadTextures() {
 	textureList["2048"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/2048.png"));
 	textureList["mainBG"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/fond-jeu.png"));
 	textureList["secondaryBG"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/fond-side.jpg"));
+	textureList["lossTransition"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/loss-transition.png"));
+	textureList["loss"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/Davy-Jones-skeleton.png"));
+	textureList["winTransition"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/winTransition.png"));
+	textureList["win"] = SDL_CreateTextureFromSurface(renderer, IMG_Load("img/win.png"));
+	//textureList["win"] = SDL_CreateTextureFromSurface(renderer, );
+
 }
 
-void GameWindow::CloseWindow() {
-	SDL_Quit();
+void GameWindow::ScreenDisplay() {
+		SDL_RenderCopy(renderer, textureList["secondaryBG"], NULL, NULL);
+
+		SDL_Rect dstrect;
+
+		dstrect.x = windowSize[0] / 2 - windowSize[1] / 2;
+		dstrect.y = 0;
+		dstrect.w = windowSize[1];
+		dstrect.h = windowSize[1];
+
+		SDL_RenderCopy(renderer, textureList["mainBG"], NULL, &dstrect);
+
+
+		SDL_RenderPresent(renderer);
+
+		for (int i = 0; i < 16; i++) {
+			grid.array[i].BoxDisplay(windowSize[1], windowSize[0], textureList, renderer);
+
+		}
+}
+
+void GameWindow::WindowWin() {
+	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, textureList["winTransition"], NULL, NULL);
+	SDL_RenderPresent(renderer);
+	SDL_Delay(2000);
+	SDL_RenderCopy(renderer, textureList["win"], NULL, NULL);
+	SDL_RenderPresent(renderer);
+
+	SDL_Delay(4000);
+}
+
+void GameWindow::WindowLoss() {
+	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, textureList["lossTransition"], NULL, NULL);
+	SDL_RenderPresent(renderer);
+	SDL_Delay(2000);
+	SDL_RenderCopy(renderer, textureList["loss"], NULL, NULL);
+	SDL_RenderPresent(renderer);
+
+	SDL_Delay(4000);
+}
+
+void GameWindow::WindowMovement() {
+	SDL_Event event;
+	bool choosing= true;
+	while (SDL_WaitEvent(&event) && choosing)
+	{
+		if (event.type == SDL_KEYDOWN) {
+			if (event.key.keysym.sym == SDLK_UP) {
+				grid.stacker.Launch(0, grid.array);
+				choosing = false;
+			}
+			else if (event.key.keysym.sym == SDLK_DOWN) {
+				grid.stacker.Launch(1, grid.array);
+				choosing = false;
+			}
+			else if (event.key.keysym.sym == SDLK_LEFT) {
+				grid.stacker.Launch(2, grid.array);
+				choosing = false;
+			}
+			else if (event.key.keysym.sym == SDLK_RIGHT) {
+				grid.stacker.Launch(3, grid.array);
+				choosing = false;
+			}
+		}
+	}
 }

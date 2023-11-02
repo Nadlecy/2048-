@@ -6,6 +6,8 @@
 #include <iostream>
 #include <vector>
 #include <SDL.h>
+#include <cstdlib>
+#include <SDL_ttf.h>
 
 using namespace std;
 
@@ -18,6 +20,7 @@ void Test()
 void Play() 
 {
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+	TTF_Init();
 
 	GameWindow game = GameWindow();
 
@@ -27,28 +30,34 @@ void Play()
 	while (game.grid.playing == true)
 	{
 		game.grid.CreateNumber(false);
-		game.grid.Display();
-
+	
 		game.ScreenDisplay();
-		game.grid.Movement();
+		game.WindowMovement();
 
 		//system("cls");
 
-		if (not (game.grid.Win() && game.grid.stacker.OverallCheck(game.grid.array))) {
-			game.grid.Display();
-			game.grid.playing = false;
-		}
+		if (not game.grid.stacker.OverallCheck(game.grid.array)) {
+			game.ScreenDisplay();
+			SDL_Delay(2500);
+			game.WindowLoss();
+			break;
 
+		}else if(not (game.grid.Win())) {
+			game.ScreenDisplay();
+			SDL_Delay(3000);
+			game.WindowWin();
+			break;
+		}
 	}
 
-	game.CloseWindow();
-		
+	TTF_Quit();
+	SDL_Quit();
 }
 
 int main(int argc, char** argv)
 {
 	Test();
 	Play();
-
+	
 	return 0;
 }

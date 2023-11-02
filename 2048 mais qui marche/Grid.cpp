@@ -24,8 +24,11 @@ Grid::Grid()
 	oldScore = 0;
 	stacker = Stacker();
 	directionArray = {"up","down","left","right"};
+
+	srand(time(NULL));
 };
 
+/*
 void Grid::Display()
 {
 	oldScore = score;
@@ -73,7 +76,7 @@ void Grid::Display()
 
 	cout << endl << "Your score is:" << score  << endl;
 
-}
+}*/
 
 void Grid::CreateNumber(bool isFirst)
 {
