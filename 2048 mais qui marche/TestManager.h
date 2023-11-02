@@ -1,14 +1,13 @@
 #pragma once
 
 #include "stacker.h"
+#include "Test.h"
 
 #include <vector>
 
-class Test;
-
 class TestManager {
 public:
-	std::vector<Test> testList;
+	vector<Test> testList;
 	Stacker stacker;
 
 	TestManager();
