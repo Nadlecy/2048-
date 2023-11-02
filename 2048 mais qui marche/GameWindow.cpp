@@ -56,7 +56,15 @@ void GameWindow::LoadTextures() {
 
 void GameWindow::Score(){
 	char str[4];
+
 	snprintf(str, sizeof(str), "%d", grid.score);
+	
+	/*
+	for (int i=0; i <4; i++){
+		if(str[i]==NULL){
+			str[i] = '_';
+		}
+	}*/
 
 	textureList["score"] = SDL_CreateTextureFromSurface(renderer, TTF_RenderUTF8_Blended(font, str, color));
 }
