@@ -13,18 +13,18 @@ using namespace std;
 
 GameWindow::GameWindow()
 {
+	// variable for the sdl window
 	SDL_DisplayMode DM;
 	SDL_GetCurrentDisplayMode(0, &DM); 
 	windowSize = { DM.w, DM.h }; // {largeur, hauteur}
 	window = SDL_CreateWindow("SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowSize[0], windowSize[1], SDL_WINDOW_FULLSCREEN_DESKTOP);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
-
-	color = { 255, 255,255 };
-
-	font = TTF_OpenFont("font/KrabbyPatty.ttf", 120);
-	
 	SDL_SetWindowTitle(window, "2048");
 
+	// variable for the font use by ttf
+	color = { 255, 255,255 };
+	font = TTF_OpenFont("font/KrabbyPatty.ttf", 120);
+	
 	objectList = {
 		new GameObject("mainBG", windowSize[1], windowSize[1], windowSize[0] / 2 - windowSize[1] / 2, 0),
 		new GameObject("scoreText", ((windowSize[0]-windowSize[1])/20) * 8, windowSize[1] / 8, (windowSize[0] - windowSize[1]) / 20, 0),
@@ -55,17 +55,13 @@ void GameWindow::LoadTextures() {
 }
 
 void GameWindow::Score(){
-	char str[4];
-
-	snprintf(str, sizeof(str), "%d", grid.score);
+	// this parts need to be load every time a move is down 
 	
-	/*
-	for (int i=0; i <4; i++){
-		if(str[i]==NULL){
-			str[i] = '_';
-		}
-	}*/
+	// transform the int from grid.score into char* 
+	char str[4];
+	snprintf(str, sizeof(str), "%d", grid.score);
 
+	// set this char* into the texturelist
 	textureList["score"] = SDL_CreateTextureFromSurface(renderer, TTF_RenderUTF8_Blended(font, str, color));
 }
 
@@ -75,6 +71,7 @@ void GameWindow::ScreenDisplay() {
 
 	SDL_Rect rect;
 
+	// the variable set in objectlist are use as variable for the rect of principal textures
 	for (int i = 0; i < objectList.size(); i++) {
 
 		rect.w = objectList[i]->width;

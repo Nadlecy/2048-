@@ -28,46 +28,6 @@ Grid::Grid()
 	srand(time(NULL));
 };
 
-/*
-void Grid::Display()
-{
-	
-	cout << "_____________________" << endl;
-	for (int i = 0; i < 4; i++) {
-		cout << "|";
-		for (int u = 0; u < 4; u++) {
-			if (array[i*4 + u].box_value > 0)
-			{
-
-				int size = trunc(log10(array[i * 4 +u].box_value));
-
-				if (size == 4){
-
-					cout << array[i * 4 +u].box_value;
-
-				} else {
-
-					string space;
-
-					for (int j = size +1; j < 4; j++){
-
-						space += " ";
-
-					}
-
-					cout << space << array[i * 4 +u].box_value <<"|";
-
-				}
-			}
-			else {
-				cout << "    |";
-			}
-		}
-		cout << endl << "_____________________" << endl;
-	}
-
-}*/
-
 void Grid::CreateNumber(bool isFirst)
 {
 	bool placing = false;
@@ -78,7 +38,7 @@ void Grid::CreateNumber(bool isFirst)
 		}
 	}
 
-
+	// random spawn of 2 or 4 in game
 	int rng = rand() % 16;
 
 	if (isFirst)
@@ -105,6 +65,7 @@ void Grid::CreateNumber(bool isFirst)
 		}
 	}
 
+	//calculation of the score
 	oldScore = score;
 
 	for (int i = 0; i < 16; i++) {
@@ -115,45 +76,6 @@ void Grid::CreateNumber(bool isFirst)
 
 	score -= oldScore;
 }
-/*
-void Grid::Movement()
-{
-	string playerAnswer;
-
-	bool choosing = true;
-	while (choosing) {
-
-
-		char c = _getch();
-		switch (c) {
-		case KEY_UP:
-			playerAnswer = "up";
-			choosing = false;
-			break;
-		case KEY_DOWN:
-			playerAnswer = "down";
-			choosing = false;
-			break;
-		case KEY_LEFT:
-			playerAnswer = "left";
-			choosing = false;
-			break;
-		case KEY_RIGHT:
-			playerAnswer = "right";
-			choosing = false;
-			break;
-		default:
-			choosing = true;
-			break;
-		}
-	}
-
-	for (int i = 0; i < 4; i++) {
-		if (playerAnswer == directionArray[i]) {
-			stacker.Launch(i, array);
-		}
-	}
-};*/
 
 bool Grid::Win()
 {

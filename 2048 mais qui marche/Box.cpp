@@ -26,6 +26,8 @@ void Box::BoxDisplay(int screenH, int screenW, map<string, SDL_Texture*> texture
 
 	SDL_Rect dstrect;
 
+	// each box have an unique rect that change of position when the box position change
+
 	dstrect.x = screenW / 2 - screenH / 2 + (screenH / 4) * positionX + (screenH / 80);
 	dstrect.y = (screenH / 4) * positionY + (screenH / 80);
 	dstrect.w = (screenH / 4) - (screenH / 40);
