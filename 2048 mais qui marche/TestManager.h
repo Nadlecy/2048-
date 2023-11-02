@@ -1,8 +1,10 @@
 #pragma once
-#include "Test.h"
+
 #include "stacker.h"
 
 #include <vector>
+
+class Test;
 
 class TestManager {
 public:

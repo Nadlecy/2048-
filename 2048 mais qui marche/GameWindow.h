@@ -1,17 +1,18 @@
 #pragma once
 
-class GameObject;
-struct SDL_Window;
-struct SDL_Renderer;
-struct SDL_Texture;
-
 #include "Grid.h"
 
 #include <vector>
 #include <map>
 #include <string> 
 #include <SDL_ttf.h>
+
 using namespace std;
+
+class GameObject;
+struct SDL_Window;
+struct SDL_Renderer;
+struct SDL_Texture;
 
 class GameWindow
 {

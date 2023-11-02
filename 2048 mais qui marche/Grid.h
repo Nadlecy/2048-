@@ -20,7 +20,6 @@ public:
 
 	Grid();
 
-	//void Display();
 	void CreateNumber(bool isFirst);
 	void Movement();
 	bool Win();

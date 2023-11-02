@@ -17,16 +17,4 @@ public:
 	bool expectedResult;
 
 	Test(const char * name, int direction, vector<int> array, vector<int> arrayTwo, bool expected = true);
-
-	/*bool DirectionRight();
-	bool DirectionLeft();
-	bool DirectionUp();
-	bool DirectionDown();
-	bool FusionNormal();
-	bool FusionWithGap();
-	bool FusionFourAdjacent();
-	bool Win();
-	bool Loss();
-
-	bool TryAll();*/
 };
