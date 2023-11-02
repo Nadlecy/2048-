@@ -21,6 +21,5 @@ public:
 	Grid();
 
 	void CreateNumber(bool isFirst);
-	void Movement();
 	bool Win();
 };
