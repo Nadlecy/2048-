@@ -2,7 +2,6 @@
 
 class GameObject
 {
-	//ask about this !
 public:
 	
 	const char* objectName;

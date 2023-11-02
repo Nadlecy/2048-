@@ -11,13 +11,13 @@
 
 using namespace std;
 
-void Test() 
+void Test() //runs a series of tests checking major functions are operational
 {
 	TestManager tester;
 	tester.TryTests();
 }
 
-void Play() 
+void Play() //runs the 2048 game
 {
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 	TTF_Init();

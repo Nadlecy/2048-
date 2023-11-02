@@ -7,6 +7,7 @@ TestManager::TestManager() {
 	stacker = Stacker();
 
 	//directions	up = 0		 down = 1	 left = 2	 right =3
+	//setting the tests that will be run
 	testList.push_back( Test("Template", 0, { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }, { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }));
 	testList.push_back( Test("Template Failure", 0, { 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }, { 2,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }, false));
 
@@ -20,7 +21,8 @@ TestManager::TestManager() {
 	testList.push_back( Test("One fusion, one leftover", 2, { 0,2,2,2, 0,0,0,0, 0,0,0,0, 0,0,0,0 }, { 4,2,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 }));
 }
 
-bool TestManager::TryTests() {
+bool TestManager::TryTests() //runs every set test and returns each result in the console
+{
 	for (int i = 0; i < testList.size(); i++) {
 		stacker.Launch(testList[i].testDirection, testList[i].situationArray);
 		cout << testList[i].testName;

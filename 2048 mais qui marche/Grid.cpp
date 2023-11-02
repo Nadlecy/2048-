@@ -115,7 +115,7 @@ void Grid::CreateNumber(bool isFirst)
 
 	score -= oldScore;
 }
-
+/*
 void Grid::Movement()
 {
 	string playerAnswer;
@@ -153,7 +153,7 @@ void Grid::Movement()
 			stacker.Launch(i, array);
 		}
 	}
-};
+};*/
 
 bool Grid::Win()
 {
